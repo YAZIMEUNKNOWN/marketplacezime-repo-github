@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+header.after {
+  content: "";
+  width: 100%;
+  height: 100vh;
+  background: #000000;
+  opacity: 1.7;
+  position: absolute;
+  top: 0;
+}
+#background-video {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  object-fit: cover;
+}
+.video-info {
+  z-index: 99%;
+  width: 100%;
+  position: relative;
+  color: #100;
+  text-align: center;
+}
