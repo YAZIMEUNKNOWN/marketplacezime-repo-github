@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - ZimeMajesty</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background-color: #222;
+      line-height: 1.6;
+    }
+
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      overflow: hidden;
+      margin-bottom: 60px;
+    }
+
+    .hero-image video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    header {
+      background-color: rgba(34, 34, 34, 0.8);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    header h1 {
+      font-size: 36px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: -50px auto 20px auto;
+      background-color: #121212;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 40px;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .profile-info img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-info div {
+      flex: 1;
+      max-width: 500px;
+      text-align: cover;
+    }
+
+    .profile-info h2 {
+      font-size: 28px;
+      color: #fff9f9;
+    }
+
+    .profile-info p {
+      color: #bbb;
+      font-size: 16px;
+    }
+
+    .profile-info button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .profile-info button:hover {
+      background-color: #81c784;
+    }
+
+    .social-catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      background-color: #121212;
+    }
+
+    .social-catalog .card {
+      background-color: #444;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-catalog .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .social-catalog .card h3 {
+      font-size: 22px;
+      margin-bottom: 1px;
+      color: #fff;
+    }
+
+    .social-catalog .card p {
+      font-size: 16px;
+      color: #aaa;
+      margin-bottom: 1px;
+    }
+
+    .social-catalog .card a {
+      text-decoration: none;
+      color: #4CAF50;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-catalog .card a:hover {
+      color: #81c784;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #222;
+      color: white;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image {
+        height: 22vh;
+      }
+
+      .profile-info {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .profile-info img {
+        margin-bottom: 20px;
+        width: 150px;
+        height: 150px;
+      }
+
+      .profile-info div {
+        max-width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 18px;
+      }
+
+      .profile-info h2 {
+        font-size: 24px;
+      }
+
+      .profile-info p {
+        font-size: 14px;
+      }
+
+      .social-catalog {
+        padding: 20px;
+      }
+
+      .social-catalog .card h3 {
+        font-size: 20px;
+      }
+    }
+
+    .desc {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+      animation: fadeInText 1s ease-out 0.7s forwards;
+      opacity: 0;
+    }
+
+    .dana-number {
+      font-size: 20px;
+      font-weight: bold;
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-bottom: 15px;
+      user-select: all;
+    }
+
+    .copy-btn {
+      background-color: #ffffff;
+      color: #2D2DFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .copy-btn:hover {
+      background-color: #d1d1ff;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <footer>
+      <h2>Halaman pembayaran</h2>
+    </footer>
+  </header>
+
+  <div class="hero-image">
+    <video autoplay muted loop id="background-video" type="video/mp4">
+      <source src="https://files.catbox.moe/k1txw0.mp4">
+      browser anda tidak mendukung Video
+    </video>
+  </div>
+
+  <div class="container">
+    <div class="profile-info">
+      <img src="https://files.catbox.moe/pvrkow.jpg" title="ZimeMajesty"> 
+      <h2>ZimeMajesty</h2>
+      <h5>Hallo kak><</h5>
+      <h6>Sebelum bayar silahkan chat saya dulu ya kak, jangan lupa bukti tf nya di kirim ke saya, terimaksih yaaa selamat berbelanja ><</h6>
+    </div>
+  </div>
+
+  <div class="social-catalog" style="width: 100%">
+    <div class="card">
+      <a href="https://files.catbox.moe/v3bxrb.jpg" download>
+        <img src="https://files.catbox.moe/v3bxrb.jpg" alt="Dana" style="width:100%; border-radius: 20px">
+      </a>
+      <h6>Pembayaran Qris</h6>
+      <a href="https://files.catbox.moe/v3bxrb.jpg" download>
+        <button class="copy-btn">Download Foto</button>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <h5>Powered By ZimeMajesty</h5>
+  </footer>
+
+</body>
+</html>
